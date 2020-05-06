@@ -72,7 +72,7 @@ namespace Odev
 
             byte[] salcaKutusuImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/salca.png");
             Image salcaKutusuImage = (Bitmap)((new ImageConverter()).ConvertFrom(salcaKutusuImageByte));
-            Salca = new Atik(550, salcaKutusuImage);
+            Salca = new Atik(550, salcaKutusuImage); 
 
 
 
