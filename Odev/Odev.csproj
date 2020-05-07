@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Atiklar\Atik.cs" />
+    <Compile Include="Atiklar\Tur.cs" />
     <Compile Include="Kutular\IDolabilen.cs" />
     <Compile Include="Kutular\IAtikKutusu.cs" />
     <Compile Include="Atiklar\IAtik.cs" />

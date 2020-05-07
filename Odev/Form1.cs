@@ -22,69 +22,90 @@ namespace Odev
         IAtik gazete;
         IAtik KolaKutusu;
         IAtik Salatalik;
-        IAtik Salca;
-        Atik[] Atiklar;
+        IAtik SalcaKutusu;
+
+        IAtikKutusu OrganikAtikKutusu;
+        IAtikKutusu KagitKutusu;
+        IAtikKutusu CamKutusu;
+        IAtikKutusu MetalKutusu;
+
+        IAtik[] Atiklar;
+
+
+        Random RND;
+        public static int Sure = 60;
+        public static int Puan = 0;
+        public static int ResimIndex = 0;
         public Form1()
         {
             InitializeComponent();
+            Tanimlamalar();
+        }
+
+        private void Tanimlamalar()
+        {
             Atiklar = new Atik[8];
 
-
-            byte[] BardakImageByte = File.ReadAllBytes(Application.StartupPath+"/Resimler/bardak.png");
+            byte[] BardakImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/bardak.png");
             Image BardakImage = (Bitmap)((new ImageConverter()).ConvertFrom(BardakImageByte));
-            bardak = new Atik(250, BardakImage);
+            bardak = new Atik(250, BardakImage, Tur.Cam, "Bardak");
 
-            byte[] CamSiseImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/camsise.png"); 
+            byte[] CamSiseImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/camsise.png");
             Image CamSiseImage = (Bitmap)((new ImageConverter()).ConvertFrom(CamSiseImageByte));
-            camsise = new Atik(600, CamSiseImage);
+            camsise = new Atik(600, CamSiseImage, Tur.Cam, "Cam Şişe");
 
-
-
-            byte[] DergiImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/dergi.png"); 
+            byte[] DergiImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/dergi.png");
             Image DergiImage = (Bitmap)((new ImageConverter()).ConvertFrom(DergiImageByte));
-           
-            dergi = new Atik(200, DergiImage);
+            dergi = new Atik(200, DergiImage, Tur.Kagit, "Dergi");
 
 
             byte[] domatImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/domat.png");
-            Image  domatImage  = (Bitmap)((new ImageConverter()).ConvertFrom(domatImageByte));
-            domat = new Atik(150, domatImage);
-
-
+            Image domatImage = (Bitmap)((new ImageConverter()).ConvertFrom(domatImageByte));
+            domat = new Atik(150, domatImage, Tur.Organik, "Domates");
 
             byte[] gazeteImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/gazete.png");
             Image gazeteImage = (Bitmap)((new ImageConverter()).ConvertFrom(gazeteImageByte));
-            gazete = new Atik(250, gazeteImage);
-
-
+            gazete = new Atik(250, gazeteImage, Tur.Kagit, "Gazete");
 
             byte[] kolakutusuImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/kolakutusu.png");
             Image kolakutusuiImage = (Bitmap)((new ImageConverter()).ConvertFrom(kolakutusuImageByte));
-            KolaKutusu = new Atik(350, kolakutusuiImage);
-
-
+            KolaKutusu = new Atik(350, kolakutusuiImage, Tur.Metal, "Kola Kutusu");
 
             byte[] salatalikImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/salatalik.png");
             Image salatalikImage = (Bitmap)((new ImageConverter()).ConvertFrom(salatalikImageByte));
-            Salatalik = new Atik(120, salatalikImage);
+            Salatalik = new Atik(120, salatalikImage, Tur.Organik, "Salatalık");
 
-
-
-            byte[] salcaKutusuImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/salca.png");
+            byte[] salcaKutusuImageByte = File.ReadAllBytes(Application.StartupPath + "/Resimler/salcaKutusu.png");
             Image salcaKutusuImage = (Bitmap)((new ImageConverter()).ConvertFrom(salcaKutusuImageByte));
-            Salca = new Atik(550, salcaKutusuImage); 
+            SalcaKutusu = new Atik(550, salcaKutusuImage, Tur.Metal, "Salça Kutusu");
 
+            Atiklar[0] = bardak;
+            Atiklar[1] = camsise;
+            Atiklar[2] = dergi;
+            Atiklar[3] = domat;
+            Atiklar[4] = gazete;
+            Atiklar[5] = KolaKutusu;
+            Atiklar[6] = Salatalik;
+            Atiklar[7] = SalcaKutusu;
 
-
-            
-
-
-
+            OrganikAtikKutusu = new Kutu(0, 700);
+            KagitKutusu = new Kutu(1000, 1200);
+            CamKutusu = new Kutu(600, 2200);
+            MetalKutusu = new Kutu(800, 2300);
+        }
+        private void ResimDondurme()
+        {
+            RND = new Random();
+            var RastgeleDeger = RND.Next(0, 7);
+            ResimIndex = RastgeleDeger;
+            pictureBox_Resim.Image = Atiklar[RastgeleDeger].Image;
 
         }
-        int Sure = 60;
         private void btn_YeniOyun_Click(object sender, EventArgs e)
         {
+            Puan = 0;
+            Sure = 60;
+            ResimDondurme();
             timer_sayac_Oyun.Start();
         }
 
@@ -92,6 +113,182 @@ namespace Odev
         {
             Sure--;
             lbl_Sure_Dynamic.Text = Sure.ToString();
+            if (Sure == 0)
+            {
+                timer_sayac_Oyun.Stop();
+            }
         }
+
+        #region OrganikAtik
+        private void btn_OrganikAtik_Click(object sender, EventArgs e)
+        {
+
+            if (Sure != 0)
+            {
+                if (Atiklar[ResimIndex].tur == Tur.Organik)
+                {
+                    if (OrganikAtikKutusu.Ekle((Atik)Atiklar[ResimIndex]))
+                    {
+
+                        progressBar_OrganikAtik.Value = OrganikAtikKutusu.DolulukOrani;
+                        Puan = Puan + Atiklar[ResimIndex].Hacim;
+                        lbl_Puan_Dynamic.Text = Puan.ToString();
+                        listView_OrganikAtik.Items.Add($"{Atiklar[ResimIndex].Isim} ({Atiklar[ResimIndex].Hacim})");
+                        ResimDondurme();
+                    }
+                }
+            }
+        }
+
+
+
+        private void btn_OrganikAtikBosalt_Click(object sender, EventArgs e)
+        {
+            if (OrganikAtikKutusu.Bosalt())
+            {
+                Sure = Sure + 3;
+                lbl_Sure_Dynamic.Text = Sure.ToString();
+                progressBar_OrganikAtik.Value = 0;
+                listView_OrganikAtik.Items.Clear();
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
+
+        #region CamIslemleri
+        private void btn_Cam_Click(object sender, EventArgs e)
+        {
+            if (Sure != 0)
+            {
+
+                if (Atiklar[ResimIndex].tur == Tur.Cam)
+                {
+                    if (CamKutusu.Ekle((Atik)Atiklar[ResimIndex]))
+                    {
+
+                        progressBar_cam.Value = CamKutusu.DolulukOrani;
+                        Puan = Puan + Atiklar[ResimIndex].Hacim;
+                        lbl_Puan_Dynamic.Text = Puan.ToString();
+                        listView_Cam.Items.Add($"{Atiklar[ResimIndex].Isim} ({Atiklar[ResimIndex].Hacim})");
+                        ResimDondurme();
+                    }
+                }
+
+            }
+        }
+        private void btn_CamBosalt_Click(object sender, EventArgs e)
+        {
+            if (CamKutusu.Bosalt())
+            {
+                Sure = Sure + 3;
+                lbl_Sure_Dynamic.Text = Sure.ToString();
+                Puan = Puan + 600;
+                lbl_Puan_Dynamic.Text = Puan.ToString();
+                progressBar_cam.Value = 0;
+                listView_Cam.Items.Clear();
+
+            }
+            else
+            {
+
+            }
+        }
+
+
+        #endregion
+
+        #region KagitIslemleri
+        private void Btn_Kagit_Click(object sender, EventArgs e)
+        {
+            if (Sure != 0)
+            {
+
+                if (Atiklar[ResimIndex].tur == Tur.Kagit)
+                {
+                    if (KagitKutusu.Ekle((Atik)Atiklar[ResimIndex]))
+                    {
+
+                        progressBar_kagitAtik.Value = KagitKutusu.DolulukOrani;
+                        Puan = Puan + Atiklar[ResimIndex].Hacim;
+                        lbl_Puan_Dynamic.Text = Puan.ToString();
+                        listView_Kagit.Items.Add($"{Atiklar[ResimIndex].Isim} ({Atiklar[ResimIndex].Hacim})");
+                        ResimDondurme();
+
+                    }
+                }
+
+
+            }
+
+        }
+        private void btn_KagitBosalt_Click(object sender, EventArgs e)
+        {
+            if (KagitKutusu.Bosalt())
+            {
+                Sure = Sure + 3;
+                lbl_Sure_Dynamic.Text = Sure.ToString();
+                Puan = Puan + 1000;
+                lbl_Puan_Dynamic.Text = Puan.ToString();
+                progressBar_kagitAtik.Value = 0;
+                listView_Kagit.Items.Clear();
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
+
+        #region MetalIslemleri
+        private void btn_Metal_Click(object sender, EventArgs e)
+        {
+            if (Sure != 0)
+            {
+
+                if (Atiklar[ResimIndex].tur == Tur.Metal)
+                {
+                    if (MetalKutusu.Ekle((Atik)Atiklar[ResimIndex]))
+                    {
+                        progressBar_Metal.Value = MetalKutusu.DolulukOrani;
+                        Puan = Puan + Atiklar[ResimIndex].Hacim;
+                        lbl_Puan_Dynamic.Text = Puan.ToString();
+                        listView_Metal.Items.Add($"{Atiklar[ResimIndex].Isim} ({Atiklar[ResimIndex].Hacim})");
+                        ResimDondurme();
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+
+        }
+        private void btn_MetalBosalt_Click(object sender, EventArgs e)
+        {
+            if (MetalKutusu.Bosalt())
+            {
+                Sure = Sure + 3;
+                lbl_Sure_Dynamic.Text = Sure.ToString();
+                Puan = Puan + 800;
+                lbl_Puan_Dynamic.Text = Puan.ToString();
+                progressBar_Metal.Value = 0;
+                listView_Metal.Items.Clear();
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
+
+        private void btn_Cikis_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }

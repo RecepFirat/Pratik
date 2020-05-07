@@ -39,26 +39,26 @@
             this.lbl_Sure_Dynamic = new System.Windows.Forms.Label();
             this.lbl_Sure = new System.Windows.Forms.Label();
             this.btn_YeniOyun = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Cikis = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar_OrganikAtik = new System.Windows.Forms.ProgressBar();
             this.listView_OrganikAtik = new System.Windows.Forms.ListView();
             this.btn_OrganikAtikBosalt = new System.Windows.Forms.Button();
             this.btn_OrganikAtik = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.progressBar_kagitAtik = new System.Windows.Forms.ProgressBar();
             this.listView_Kagit = new System.Windows.Forms.ListView();
             this.btn_KagitBosalt = new System.Windows.Forms.Button();
             this.Btn_Kagit = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
+            this.progressBar_cam = new System.Windows.Forms.ProgressBar();
             this.listView_Cam = new System.Windows.Forms.ListView();
             this.btn_CamBosalt = new System.Windows.Forms.Button();
             this.btn_Cam = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.progressBar_Metal = new System.Windows.Forms.ProgressBar();
             this.listView_Metal = new System.Windows.Forms.ListView();
             this.btn_MetalBosalt = new System.Windows.Forms.Button();
             this.btn_Metal = new System.Windows.Forms.Button();
@@ -82,6 +82,7 @@
             this.pictureBox_Resim.Location = new System.Drawing.Point(24, 27);
             this.pictureBox_Resim.Name = "pictureBox_Resim";
             this.pictureBox_Resim.Size = new System.Drawing.Size(314, 241);
+            this.pictureBox_Resim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_Resim.TabIndex = 0;
             this.pictureBox_Resim.TabStop = false;
             // 
@@ -180,17 +181,18 @@
             this.btn_YeniOyun.UseVisualStyleBackColor = false;
             this.btn_YeniOyun.Click += new System.EventHandler(this.btn_YeniOyun_Click);
             // 
-            // button2
+            // btn_Cikis
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGreen;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.Ivory;
-            this.button2.Location = new System.Drawing.Point(36, 938);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(296, 99);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "ÇIKIŞ";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_Cikis.BackColor = System.Drawing.Color.DarkGreen;
+            this.btn_Cikis.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Cikis.ForeColor = System.Drawing.Color.Ivory;
+            this.btn_Cikis.Location = new System.Drawing.Point(36, 938);
+            this.btn_Cikis.Name = "btn_Cikis";
+            this.btn_Cikis.Size = new System.Drawing.Size(296, 99);
+            this.btn_Cikis.TabIndex = 2;
+            this.btn_Cikis.Text = "ÇIKIŞ";
+            this.btn_Cikis.UseVisualStyleBackColor = false;
+            this.btn_Cikis.Click += new System.EventHandler(this.btn_Cikis_Click);
             // 
             // groupBox5
             // 
@@ -214,7 +216,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.progressBar1);
+            this.groupBox6.Controls.Add(this.progressBar_OrganikAtik);
             this.groupBox6.Controls.Add(this.listView_OrganikAtik);
             this.groupBox6.Controls.Add(this.btn_OrganikAtikBosalt);
             this.groupBox6.Controls.Add(this.btn_OrganikAtik);
@@ -225,12 +227,12 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = " ";
             // 
-            // progressBar1
+            // progressBar_OrganikAtik
             // 
-            this.progressBar1.Location = new System.Drawing.Point(18, 298);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(250, 31);
-            this.progressBar1.TabIndex = 2;
+            this.progressBar_OrganikAtik.Location = new System.Drawing.Point(18, 298);
+            this.progressBar_OrganikAtik.Name = "progressBar_OrganikAtik";
+            this.progressBar_OrganikAtik.Size = new System.Drawing.Size(250, 31);
+            this.progressBar_OrganikAtik.TabIndex = 2;
             // 
             // listView_OrganikAtik
             // 
@@ -249,6 +251,7 @@
             this.btn_OrganikAtikBosalt.TabIndex = 0;
             this.btn_OrganikAtikBosalt.Text = "BOŞALT";
             this.btn_OrganikAtikBosalt.UseVisualStyleBackColor = true;
+            this.btn_OrganikAtikBosalt.Click += new System.EventHandler(this.btn_OrganikAtikBosalt_Click);
             // 
             // btn_OrganikAtik
             // 
@@ -258,10 +261,11 @@
             this.btn_OrganikAtik.TabIndex = 0;
             this.btn_OrganikAtik.Text = "ORGANİK ATIK";
             this.btn_OrganikAtik.UseVisualStyleBackColor = true;
+            this.btn_OrganikAtik.Click += new System.EventHandler(this.btn_OrganikAtik_Click);
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.progressBar2);
+            this.groupBox7.Controls.Add(this.progressBar_kagitAtik);
             this.groupBox7.Controls.Add(this.listView_Kagit);
             this.groupBox7.Controls.Add(this.btn_KagitBosalt);
             this.groupBox7.Controls.Add(this.Btn_Kagit);
@@ -272,12 +276,12 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = " ";
             // 
-            // progressBar2
+            // progressBar_kagitAtik
             // 
-            this.progressBar2.Location = new System.Drawing.Point(18, 298);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(250, 31);
-            this.progressBar2.TabIndex = 2;
+            this.progressBar_kagitAtik.Location = new System.Drawing.Point(18, 298);
+            this.progressBar_kagitAtik.Name = "progressBar_kagitAtik";
+            this.progressBar_kagitAtik.Size = new System.Drawing.Size(250, 31);
+            this.progressBar_kagitAtik.TabIndex = 2;
             // 
             // listView_Kagit
             // 
@@ -296,6 +300,7 @@
             this.btn_KagitBosalt.TabIndex = 0;
             this.btn_KagitBosalt.Text = "BOŞALT";
             this.btn_KagitBosalt.UseVisualStyleBackColor = true;
+            this.btn_KagitBosalt.Click += new System.EventHandler(this.btn_KagitBosalt_Click);
             // 
             // Btn_Kagit
             // 
@@ -305,10 +310,11 @@
             this.Btn_Kagit.TabIndex = 0;
             this.Btn_Kagit.Text = "KAĞIT";
             this.Btn_Kagit.UseVisualStyleBackColor = true;
+            this.Btn_Kagit.Click += new System.EventHandler(this.Btn_Kagit_Click);
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.progressBar3);
+            this.groupBox8.Controls.Add(this.progressBar_cam);
             this.groupBox8.Controls.Add(this.listView_Cam);
             this.groupBox8.Controls.Add(this.btn_CamBosalt);
             this.groupBox8.Controls.Add(this.btn_Cam);
@@ -319,12 +325,12 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = " ";
             // 
-            // progressBar3
+            // progressBar_cam
             // 
-            this.progressBar3.Location = new System.Drawing.Point(18, 298);
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(250, 31);
-            this.progressBar3.TabIndex = 2;
+            this.progressBar_cam.Location = new System.Drawing.Point(18, 298);
+            this.progressBar_cam.Name = "progressBar_cam";
+            this.progressBar_cam.Size = new System.Drawing.Size(250, 31);
+            this.progressBar_cam.TabIndex = 2;
             // 
             // listView_Cam
             // 
@@ -343,6 +349,7 @@
             this.btn_CamBosalt.TabIndex = 0;
             this.btn_CamBosalt.Text = "BOŞALT";
             this.btn_CamBosalt.UseVisualStyleBackColor = true;
+            this.btn_CamBosalt.Click += new System.EventHandler(this.btn_CamBosalt_Click);
             // 
             // btn_Cam
             // 
@@ -352,10 +359,11 @@
             this.btn_Cam.TabIndex = 0;
             this.btn_Cam.Text = "CAM";
             this.btn_Cam.UseVisualStyleBackColor = true;
+            this.btn_Cam.Click += new System.EventHandler(this.btn_Cam_Click);
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.progressBar4);
+            this.groupBox9.Controls.Add(this.progressBar_Metal);
             this.groupBox9.Controls.Add(this.listView_Metal);
             this.groupBox9.Controls.Add(this.btn_MetalBosalt);
             this.groupBox9.Controls.Add(this.btn_Metal);
@@ -366,12 +374,12 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = " ";
             // 
-            // progressBar4
+            // progressBar_Metal
             // 
-            this.progressBar4.Location = new System.Drawing.Point(18, 298);
-            this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(250, 31);
-            this.progressBar4.TabIndex = 2;
+            this.progressBar_Metal.Location = new System.Drawing.Point(18, 298);
+            this.progressBar_Metal.Name = "progressBar_Metal";
+            this.progressBar_Metal.Size = new System.Drawing.Size(250, 31);
+            this.progressBar_Metal.TabIndex = 2;
             // 
             // listView_Metal
             // 
@@ -388,8 +396,9 @@
             this.btn_MetalBosalt.Name = "btn_MetalBosalt";
             this.btn_MetalBosalt.Size = new System.Drawing.Size(251, 60);
             this.btn_MetalBosalt.TabIndex = 0;
-            this.btn_MetalBosalt.Text = "button3";
+            this.btn_MetalBosalt.Text = "BOŞALT";
             this.btn_MetalBosalt.UseVisualStyleBackColor = true;
+            this.btn_MetalBosalt.Click += new System.EventHandler(this.btn_MetalBosalt_Click);
             // 
             // btn_Metal
             // 
@@ -399,6 +408,7 @@
             this.btn_Metal.TabIndex = 0;
             this.btn_Metal.Text = "METAL";
             this.btn_Metal.UseVisualStyleBackColor = true;
+            this.btn_Metal.Click += new System.EventHandler(this.btn_Metal_Click);
             // 
             // groupBox10
             // 
@@ -427,7 +437,7 @@
             this.ClientSize = new System.Drawing.Size(1344, 1057);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_Cikis);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox_Resim);
             this.Name = "Form1";
@@ -461,26 +471,26 @@
         private System.Windows.Forms.Label lbl_Sure_Dynamic;
         private System.Windows.Forms.Label lbl_Sure;
         private System.Windows.Forms.Button btn_YeniOyun;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Cikis;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar_OrganikAtik;
         private System.Windows.Forms.ListView listView_OrganikAtik;
         private System.Windows.Forms.Button btn_OrganikAtikBosalt;
         private System.Windows.Forms.Button btn_OrganikAtik;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar progressBar_kagitAtik;
         private System.Windows.Forms.ListView listView_Kagit;
         private System.Windows.Forms.Button btn_KagitBosalt;
         private System.Windows.Forms.Button Btn_Kagit;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ProgressBar progressBar3;
+        private System.Windows.Forms.ProgressBar progressBar_cam;
         private System.Windows.Forms.ListView listView_Cam;
         private System.Windows.Forms.Button btn_CamBosalt;
         private System.Windows.Forms.Button btn_Cam;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.ProgressBar progressBar_Metal;
         private System.Windows.Forms.ListView listView_Metal;
         private System.Windows.Forms.Button btn_MetalBosalt;
         private System.Windows.Forms.Button btn_Metal;

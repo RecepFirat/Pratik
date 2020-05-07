@@ -7,11 +7,20 @@ namespace Odev.Atiklar
         public int Hacim { get; }
 
         public Image Image { get; }
+        public Tur tur { get; }
 
-        public Atik( int Puan,Image Resim)
+        public string Isim { get; }
+
+        public Atik( int Puan,Image Resim,Tur AtikTuru,string Isim)
         {
             Hacim = Puan;
-            Resim = Image;
+            Image= Resim ;
+            tur = AtikTuru;
+            this.Isim = Isim;
+
         }
+
+
+       
     }
 }

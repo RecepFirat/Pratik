@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Odev.Atiklar
 {
-    public interface IAtik
+   public enum Tur
     {
-        int Hacim { get; }
-        System.Drawing.Image Image { get; }
-        Tur tur { get; }
-        string Isim { get; }
+        Organik,
+        Kagit,
+        Cam,
+        Metal
     }
-
 }
