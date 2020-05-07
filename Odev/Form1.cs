@@ -107,6 +107,7 @@ namespace Odev
             Sure = 60;
             ResimDondurme();
             timer_sayac_Oyun.Start();
+            btn_YeniOyun.Enabled = false;
         }
 
         private void timer_sayac_Oyun_Tick(object sender, EventArgs e)
@@ -116,6 +117,7 @@ namespace Odev
             if (Sure == 0)
             {
                 timer_sayac_Oyun.Stop();
+                btn_YeniOyun.Enabled = true;
             }
         }
 
